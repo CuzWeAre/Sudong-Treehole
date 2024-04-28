@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: tree-hole
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver # 驱动类名称
+    url: jdbc:mysql://localhost:3306/tree_hole
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  mail:
+    host: smtp.office365.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    default-encoding: UTF-8
+
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 配置mybatis的日志, 指定输出到控制台
+    map-underscore-to-camel-case: true # 开启mybatis的驼峰命名自动映射开关 a_column ------> aCloumn
+#  mapper-locations: classpath:com/cwr/mapper/*.xml
+
+oss:
+  cloudflare:
+    access-key-id: ${OSS_ACCESS_KEY:default_value} # 请以环境变量的方式配置密钥
+    secret-access-key: ${OSS_SECRET_ACCESS_KEY:default_value}
+    bucket-name: treehole
+    endpoint: ${OSS_ENDPOINT:default_value}
+    region: auto
+
+
+debug-mode: true # When debug mode is enabled, if an exception occurs, Java's built-in exception stack trace printing will replace the log printing
+
+#key-generate:
+#  algorithm: HmacSHA256
+#  key-size: 256
+#  fixed-rate: 86400000 # 1 day in milliseconds
+#jwt:
+#  expiration: 86400000 # 1 day in milliseconds
+#cookie:
+#  expiration: 86400 # 1 day in seconds
